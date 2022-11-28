@@ -1,0 +1,237 @@
+{
+	"info": {
+		"_postman_id": "0461ea23-cd8f-47ec-8633-2d5bd6874784",
+		"name": "Teste QA API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17966380"
+	},
+	"item": [
+		{
+			"name": "gerar pessoa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resposta = pm.response.json();\r",
+							"pm.globals.set(\"CPF\", resposta[0].cpf);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string idade\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"idade\");\r",
+							"});\r",
+							"pm.test(\"Body matches string sexo\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"sexo\");\r",
+							"});\r",
+							"pm.test(\"Body matches string sexo=Masculino\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Masculino\");\r",
+							"});\r",
+							"pm.test(\"Body matches string sexo=Feminino\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Feminino\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "acao",
+							"value": "gerar_pessoa",
+							"type": "text"
+						},
+						{
+							"key": "pontuacao",
+							"value": "N",
+							"type": "text"
+						},
+						{
+							"key": "sexo",
+							"value": "H",
+							"type": "text"
+						},
+						{
+							"key": "txt_qtde",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "cpf",
+							"value": "{{CPF}}",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.4devs.com.br/ferramentas_online.php",
+					"protocol": "https",
+					"host": [
+						"www",
+						"4devs",
+						"com",
+						"br"
+					],
+					"path": [
+						"ferramentas_online.php"
+					],
+					"query": [
+						{
+							"key": "acao",
+							"value": "gerar_pessoa",
+							"disabled": true
+						},
+						{
+							"key": "pontuacao",
+							"value": "N",
+							"disabled": true
+						},
+						{
+							"key": "sexo",
+							"value": "H",
+							"disabled": true
+						},
+						{
+							"key": "txt_qtde",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validar cpf",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string cpf=verdadeiro\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Verdadeiro\");\r",
+							"});\r",
+							"pm.globals.unset(\"CPF\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "acao",
+							"value": "validar_cpf",
+							"type": "text"
+						},
+						{
+							"key": "pontuacao",
+							"value": "N",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "sexo",
+							"value": "H",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "txt_qtde",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "txt_cpf",
+							"value": "{{CPF}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.4devs.com.br/ferramentas_online.php",
+					"protocol": "https",
+					"host": [
+						"www",
+						"4devs",
+						"com",
+						"br"
+					],
+					"path": [
+						"ferramentas_online.php"
+					],
+					"query": [
+						{
+							"key": "acao",
+							"value": "validar_cpf",
+							"disabled": true
+						},
+						{
+							"key": "pontuacao",
+							"value": "N",
+							"disabled": true
+						},
+						{
+							"key": "sexo",
+							"value": "H",
+							"disabled": true
+						},
+						{
+							"key": "txt_qtde",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "txt_cpf",
+							"value": "{{CPF}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
